@@ -43,6 +43,8 @@ public class Hand
         return here;
     }
     
+    public ArrayList<Card> getCards() {return cards;}
+    
     public String toString()
     {
         String toReturn = "";

@@ -32,12 +32,12 @@ public class Hand
      */
     public boolean check(Card card)
     {
-        boolean here = false;
+        boolean here = true;
         for (int i = 0; i < cards.size(); i++)
         {
-            if (cards.get(i).getLetter().equals(card.getLetter())) 
+            if (!(cards.get(i).getLetter().equals(card.getLetter()))) 
             { 
-                here = true; break;
+                here = false; break;
             }
         }
         return here;

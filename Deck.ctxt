@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Deck()
+comment1.params=
+comment1.target=Card\ deal()
+comment1.text=\r\n\ Returns\ the\ first\ Card\ from\ the\ deckPile,\ removing\ it\ from\ said\ pile.\r\n
+comment2.params=toAdd
+comment2.target=void\ addCard(Card)
+comment2.text=\r\n\ Adds\ the\ given\ Card\ to\ the\ deckPile.\r\n
+comment3.params=
+comment3.target=void\ shuffle()
+comment3.text=\r\n\ Randomizes\ the\ order\ of\ the\ deckPile.\r\n
+numComments=4

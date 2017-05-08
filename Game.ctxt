@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=main\ person
+comment0.target=void\ draw(Deck,\ Player)
+comment1.params=discards\ person\ card
+comment1.target=void\ discard(Deck,\ Player,\ Card)
+numComments=2

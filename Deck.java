@@ -35,6 +35,9 @@ public class Deck
         for (int i = 0; i < 1; i++) {Card x = new Card("Z"); deckPile.add(x); }
     }
     
+    public Deck(String empty)
+    {if (empty.length() > 1) {deckPile = new ArrayList<Card>();}}
+    
     /**
      * Returns the first Card from the deckPile, removing it from said pile.
      */

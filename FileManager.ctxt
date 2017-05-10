@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=filename
+comment0.target=FileManager(java.lang.String)
+comment1.params=
+comment1.target=void\ readFile()
+comment1.text=\n\ \ Reads\ the\ file\ and\ saves\ it\ to\ the\ ArrayList\ instance\ variable\ "file".\n\n
+comment2.params=
+comment2.target=void\ sortFile()
+comment2.text=\n\ Sorts\ the\ words\ in\ the\ file\ for\ quicker\ read\ access\ later\ on.\n
+comment3.params=word
+comment3.target=boolean\ legal(java.lang.String)
+comment3.text=\n\ \ Looks\ for\ the\ word\ inside\ of\ the\ text\ file.\n\ @param\ word\ The\ word\ we\ are\ looking\ for.\n
+numComments=4

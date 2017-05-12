@@ -25,15 +25,18 @@ public class Game
         //4.Sanity check: if d20 roll < word sum, then player loses a sanity
         //5.Draw back to 7.
         int points = inHand(person, word);
+        word = word.toUpperCase();
         if (points != -1)
         {
             if(person.insanity()|| bot.legal(word))
             {
+                System.err.println(person.getPoints());
                 person.addPoints(points);
+                System.err.println(person.getPoints());
                 discard(discards, person, word);
-            }
+            } else {System.out.println("TRY AGAIN!"); play(person, word, bot, main, discards);}
             sanityCheck(person, points);
-        }
+        } 
         int handSize = person.getHand().getCards().size();
         while(handSize<7)
         {
@@ -47,7 +50,8 @@ public class Game
         int d20 = (int)(Math.random()*20 + 1);
         if(value>d20)
         {
-            person.lessSane();
+            person.lessSane();            
+            System.out.println("Oh no, you lost a sanity! You have "+person.getSanity()+" sanity points left!");
         }
     }
     
@@ -103,9 +107,15 @@ public class Game
         for (int i = 0; i < 7; i++) {draw(main, person);}
     }
     
-    public static boolean playerOut(Player person) //checks if sanity = 0 or points >= 100
+    public static boolean playerOutSanity(Player person) //checks if sanity = 0 or points >= 100
     {
-        if (person.getPoints() >= 100 || person.getSanity() <= 0) {return true;}
+        if (person.getSanity() <= 0) {return true;}
+        else {return false;}
+    }
+    
+    public static boolean playerOutPoints(Player person) //checks if sanity = 0 or points >= 100
+    {
+        if (person.getPoints() >= 100) {return true;}
         else {return false;}
     }
 }

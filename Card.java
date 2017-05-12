@@ -36,5 +36,7 @@ public class Card
     
     public String getLetter() { return LETTER;}
     public int getValue() { return VALUE;}
+    
+    public String toString() {return LETTER;}
 }
 

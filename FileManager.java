@@ -5,11 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * This class reads the words.txt file that contains all of the words needed to create the Scrabble game.
- * @author 1101
- * @date 2017-04-22
- */
 public class FileManager {
     
     private String filename;
@@ -41,7 +36,7 @@ public class FileManager {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Something went wrong when opening the file.");
+
         }
 
 

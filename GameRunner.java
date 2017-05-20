@@ -18,7 +18,7 @@ public class GameRunner
             System.out.print("What is player " + i + "'s name?: ");
             String name = Util.getLine();
             Player temp = new Player(name);
-            for (int x = 0; x < 7; x++) {Game.draw(main, temp);} //The player draws 7 cards from the Deck;
+            for (int x = 0; x < 7; x++) {Game.draw(main, temp, discards);} //The player draws 7 cards from the Deck;
             playing.add(temp);
         }
         

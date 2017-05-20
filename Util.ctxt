@@ -6,4 +6,6 @@ comment1.target=int\ getInt()
 comment2.params=validInputs
 comment2.target=java.lang.String\ getValidInput(java.lang.String[])
 comment2.text=\r\n\ Verifies\ that\ one\ of\ the\ strings\ provided\ as\ arguments\ will\ be\r\n\ returned.\r\n\ \r\n\ Example\ usage\:\r\n\ String\ input\ \=\ User.getValidInput("yes",\ "no",\ "y",\ "n");\r\n\ \r\n\ Only\ yes,\ no,\ y,\ and\ n\ are\ valid\ inputs.\ If\ the\ user\ types\ anything\r\n\ else,\ they\ will\ be\ prompted\ to\ re-enter.\r\n\ \r\n
-numComments=3
+comment3.params=arg
+comment3.target=void\ main(java.lang.String[])
+numComments=4

@@ -36,7 +36,7 @@ public class Deck
     }
     
     public Deck(String empty)
-    {if (empty.length() > 1) {deckPile = new ArrayList<Card>();}}
+    {if (empty.length() > 0) {deckPile = new ArrayList<Card>();}}
     
     /**
      * Returns the first Card from the deckPile, removing it from said pile.
@@ -52,6 +52,12 @@ public class Deck
      * Adds the given Card to the deckPile.
      */
     public void addCard(Card toAdd) {deckPile.add(toAdd);}
+    
+    /**
+     * Return deckPile
+     */
+    
+    public ArrayList<Card> getDeck() {return deckPile;}
     
     /**
      * Randomizes the order of the deckPile.

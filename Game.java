@@ -1,9 +1,13 @@
 import java.util.ArrayList;
-
+import java.io.IOException;
 public class Game
 {
-    public static void draw(Deck main, Player person)
+    public static void draw(Deck main, Player person, Deck discards)
     {
+        if (main.getDeck().size() == 0)
+        {
+            for (int i = 0; i < discards.getDeck().size(); i++) {main.addCard(discards.deal());}
+        }
         person.getHand().drawing(main.deal());
     }
     
@@ -30,17 +34,17 @@ public class Game
         {
             if(person.insanity()|| bot.legal(word))
             {
-                System.err.println(person.getPoints());
                 person.addPoints(points);
-                System.err.println(person.getPoints());
                 discard(discards, person, word);
-            } else {System.out.println("TRY AGAIN!"); play(person, word, bot, main, discards);}
+            } else {System.out.println("Word not valid. Try another word: "); word = Util.getLine(); play(person, word, bot, main, discards);}
+            //Util.main("cmd"); FIX
+            System.out.println(person.getName() + " scored " + points +"!");
             sanityCheck(person, points);
         } 
         int handSize = person.getHand().getCards().size();
         while(handSize<7)
         {
-            draw(main, person);
+            draw(main, person, discards);
             handSize ++;
         }
     }
@@ -51,8 +55,8 @@ public class Game
         if(value>d20)
         {
             person.lessSane();            
-            System.out.println("Oh no, you lost a sanity! You have "+person.getSanity()+" sanity points left!");
-        }
+            System.out.println("Oh no, "+person.getName()+" rolled a "+d20+" and lost a sanity point!"+person.getName()+" have "+person.getSanity()+" sanity points left!");
+        } else {System.out.println(person.getName()+" rolled a "+d20+" and passed the sanity check!");}
     }
     
     public static int inHand(Player person, String word)
@@ -104,7 +108,7 @@ public class Game
         for (Card x : person.getHand().getCards())
         {temp += x.getLetter();}
         discard(discards, person, temp);
-        for (int i = 0; i < 7; i++) {draw(main, person);}
+        for (int i = 0; i < 7; i++) {draw(main, person, discards);}
     }
     
     public static boolean playerOutSanity(Player person) //checks if sanity = 0 or points >= 100

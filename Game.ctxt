@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=main\ person
-comment0.target=void\ draw(Deck,\ Player)
+comment0.params=main\ person\ discards
+comment0.target=void\ draw(Deck,\ Player,\ Deck)
 comment1.params=discards\ person\ word
 comment1.target=void\ discard(Deck,\ Player,\ java.lang.String)
 comment2.params=person\ word\ bot\ main\ discards

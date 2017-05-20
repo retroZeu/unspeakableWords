@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 public class Util
 {
@@ -41,5 +42,10 @@ public class Util
         }
         while(!valid);
         return input;
+    }
+    
+    public static void main(String... arg) throws IOException, InterruptedException
+    {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }

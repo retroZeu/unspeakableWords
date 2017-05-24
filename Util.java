@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 public class Util
 {
@@ -44,8 +43,8 @@ public class Util
         return input;
     }
     
-    public static void main(String... arg) throws IOException, InterruptedException
+    public static void clear()
     {
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        System.out.print('\u000C');
     }
 }

@@ -32,12 +32,12 @@ public class Game
         word = word.toUpperCase();
         if (points != -1)
         {
-            if(person.insanity()|| bot.legal(word))
+            if(person.insanity()|| person.getSanity() == 1 || bot.legal(word))
             {
                 person.addPoints(points);
                 discard(discards, person, word);
-            } else {System.out.println("Word not valid. Try another word: "); word = Util.getLine(); play(person, word, bot, main, discards);}
-            //Util.main("cmd"); FIX
+            } else {System.out.print("Word not valid. Try another word: "); word = Util.getLine(); play(person, word, bot, main, discards);}
+            Util.clear();
             System.out.println(person.getName() + " scored " + points +"!");
             sanityCheck(person, points);
         } 

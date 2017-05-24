@@ -1,4 +1,3 @@
-import java.util.Collections;
 import java.util.ArrayList;
 public class GameRunner
 {
@@ -21,7 +20,7 @@ public class GameRunner
             for (int x = 0; x < 7; x++) {Game.draw(main, temp, discards);} //The player draws 7 cards from the Deck;
             playing.add(temp);
         }
-        
+        Util.clear();
         
         
         
@@ -30,42 +29,48 @@ public class GameRunner
         boolean endGame = false;
         while (numOfPlayers > 1)
         {
-            Player person = playing.get(0); //ALWAYS THE FIRST PLAYER
-            
-            
-            //Display name, sanity points, total points, and hand
-            System.out.println(person.getName() + "\nSanity Points: " + person.getSanity() + "\nTotal Points: " + 
-            person.getPoints() + "\nCards: " + person.getHand().getCards().toString());
-            
-            
-            System.out.print("What would you like to do, " + person.getName() + "? [PLAY/PASS]:");
-            String opt = Util.getValidInput("PLAY", "PASS");
-            if (opt.equals("PLAY"))
+            if (!endGame)
             {
-                System.out.print("What word would you like to play?: ");
-                String word = Util.getLine();
-                Game.play(person, word, bot, main, discards);  
+                Player person = playing.get(0); //ALWAYS THE FIRST PLAYER
+                //Display name, sanity points, total points, and hand
+                System.out.println(person.getName() + "\nSanity Points: " + person.getSanity() + "\nTotal Points: " + 
+                person.getPoints() + "\nCards: " + person.getHand().getCards().toString());
+                
+                
+                System.out.print("What would you like to do, " + person.getName() + "? [PLAY/PASS]:");
+                String opt = Util.getValidInput("play", "pass");
+                if (opt.equals("play"))
+                {
+                    System.out.print("What word would you like to play? [PASS]: ");
+                    String word = Util.getLine();
+                    if (word.equals("pass")||word.equals("PASS")) 
+                    {
+                        Util.clear();
+                        Game.pass(person, main, discards);
+                    } else { Game.play(person, word, bot, main, discards); }  
+                }
+                else if (opt.equals("pass"))
+                {
+                    Util.clear();
+                    Game.pass(person, main, discards);
+                }
+                
+                boolean pointOut = Game.playerOutPoints(person);
+                boolean sanityOut = Game.playerOutSanity(person);
+                if (sanityOut || pointOut || endGame)
+                {
+                    if (pointOut) {endGame = true;}
+                    Player temp = playing.get(0); playing.remove(0); out.add(temp);
+                }
+                else {Player temp = playing.get(0); playing.remove(0); playing.add(temp);}
+                System.out.println("======"+ person.getName() + " NOW HAS "+ person.getPoints() + " POINTS!======");
+                numOfPlayers = playing.size(); //UPDATE THE VARIABLE
             }
-            else if (opt.equals("PASS"))
-            {
-                Game.pass(person, main, discards);
-            }
-            
-            boolean pointOut = Game.playerOutPoints(person);
-            boolean sanityOut = Game.playerOutSanity(person);
-            if (sanityOut || pointOut || endGame)
-            {
-                if (pointOut) {endGame = true;}
-                Player temp = playing.get(0); playing.remove(0); out.add(temp);
-            }
-            else {Player temp = playing.get(0); playing.remove(0); playing.add(temp);}
-            System.out.println("======"+ person.getName() + " NOW HAS "+ person.getPoints() + " POINTS!======");
-            numOfPlayers = playing.size(); //UPDATE THE VARIABLE
         }
         
         
         
-        
+        Util.clear();
         //END GAME ---------------
         for (int i = 0; i < numOfPlayers; i++) //Move all players from playing to out.
         {

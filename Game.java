@@ -36,11 +36,24 @@ public class Game
             {
                 person.addPoints(points);
                 discard(discards, person, word);
-            } else {System.out.print("Word not valid. Try another word: "); word = Util.getLine(); play(person, word, bot, main, discards);}
+            } 
+            else 
+            {
+                System.out.print("Word not valid. Try another word [PASS(uppercase)]: "); word = Util.getLine(); 
+                if (word.equals("PASS")) {pass(person, main, discards);}
+                else {play(person, word, bot, main, discards);}
+            }
             Util.clear();
             System.out.println(person.getName() + " scored " + points +"!");
             sanityCheck(person, points);
-        } 
+        }
+        else
+        {
+            System.out.print("Word not valid. Try another word [PASS(uppercase)]: "); word = Util.getLine(); 
+            if (word.equals("PASS")) {pass(person, main, discards);}
+            else {play(person, word, bot, main, discards);}
+            Util.clear();
+        }
         int handSize = person.getHand().getCards().size();
         while(handSize<7)
         {
@@ -74,12 +87,14 @@ public class Game
             for(String check: letters)
             { 
                 boolean valid = false;
-                while(!valid)
+                int j = 0;
+                while(!valid&&j<7)
                 {   
                     ArrayList<Card> temp =  person.getHand().getCards();
-                    for(Card x:temp)
+                    for(j=0; j<7;j++)
                     {
-                        if(x.getLetter().equals(check.toUpperCase()))
+                        
+                        if(temp.get(j).getLetter().equals(check.toUpperCase()))
                         {
                             valid = true;
                         }

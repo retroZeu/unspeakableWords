@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.ArrayList;
 public class GameRunner
 {
@@ -77,35 +78,33 @@ public class GameRunner
             System.err.print("hi2");
         }
         //Collections.sort(out); The last person in list wins.
-        int j = 0;
-        for(int i = 0; i<out.size()-j; i++)//how many times loop is run thru
+        
+        
+        ArrayList<Integer> point = new ArrayList<Integer>(); 
+        //what is the size of point right now? Prior to adding anything to it?
+        
+        for (int i = 0; i < out.size(); i++) { point.add(out.get(i).getPoints()); }
+        Collections.sort(point);
+        Player[] order= new Player[out.size()];
+        for(int i = 0; i<point.size(); i++)
         {
-            int max = out.get(0).getPoints();
-            System.err.print("hi3");
-            for(int x = 0; x<out.size()-j; x++)//number of items needed to check
+            for(int j = 0; j<point.size(); j++)
             {
-                int check = out.get(x).getPoints();
-                Player temp = out.get(out.size()-j-1);
-                if(check > max)
+                if(out.get(j).getPoints()==point.get(i))
                 {
-                    max = check;                    
-                    out.set(out.size()-j-1,out.get(x));  
-                    System.err.print("hi4");
+                    //System.err.println("I'm an i: " + i + "  LOOK AT ME");
+                    order[i] = out.get(j);
                 }
-                else
-                {
-                    out.set(out.size()-j-1,out.get(0));
-                }
-                out.add(0, temp);
-                System.err.print("hi5");
             }
-            j++;
-        }        
+        }
+    
         
         //Declare winner and stuff.
         System.out.println("RANKING");
         int placing = 1;
-        for (int i = out.size()-1; i > 0; i--)
-        { System.out.println(placing +" >> " + out.get(i).getName()); placing++; }
+        for (int i = out.size()-1; i >= 0; i--)
+        { System.out.println(placing +" >> " + order[i].getName() + " POINTS: " + order[i].getPoints());
+            placing++; 
+        }
     }
 }

@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.io.IOException;
 public class Game
 {
+    public static final int WINNING_THRESHOLD = 100;
+    
     public static void draw(Deck main, Player person, Deck discards)
     {
         if (main.getDeck().size() == 0)
@@ -77,7 +79,7 @@ public class Game
         int pointsEarned = -1;
         boolean wordInHand = true;
         ArrayList<String> letters = new ArrayList<String>();
-        for (int i = 0; i < word.length()-1; i++)
+        for (int i = 0; i < word.length(); i++)
         {
             letters.add(word.substring(i, i+1).toUpperCase());
         }
@@ -134,7 +136,7 @@ public class Game
     
     public static boolean playerOutPoints(Player person) //checks if sanity = 0 or points >= 100
     {
-        if (person.getPoints() >= 100) {return true;}
+        if (person.getPoints() >= WINNING_THRESHOLD) {return true;}
         else {return false;}
     }
 }

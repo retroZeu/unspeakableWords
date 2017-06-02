@@ -70,12 +70,10 @@ public class GameRunner
         
         
         Util.clear();
-        //END GAME ---------------
-        System.err.print("hi1");
+        //END GAME --------------
         for (int i = 0; i < numOfPlayers; i++) //Move all players from playing to out.
         {
             Player temp = playing.get(i); playing.remove(i); out.add(temp);
-            System.err.print("hi2");
         }
         //Collections.sort(out); The last person in list wins.
         
@@ -92,7 +90,6 @@ public class GameRunner
             {
                 if(out.get(j).getPoints()==point.get(i))
                 {
-                    //System.err.println("I'm an i: " + i + "  LOOK AT ME");
                     order[i] = out.get(j);
                 }
             }
